@@ -1,0 +1,12 @@
+func kod3(siffror: [Int]) -> Int {
+    guard let min = siffror.min(), let max = siffror.max() else {
+        return 0
+    }
+    let sum = min + max
+    print(sum)
+    return sum
+}
+
+// Test
+let testArray = [2, 5, 4, 6, 9, 2]
+kod3(siffror: testArray)
