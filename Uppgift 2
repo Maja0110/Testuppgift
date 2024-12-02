@@ -1,0 +1,15 @@
+func kod1(_ sentence: String) {
+    let words = sentence.split(separator: " ").map(String.init)
+    let maxWordLength = words.map { $0.count }.max() ?? 0
+    let border = String(repeating: "*", count: maxWordLength + 4)
+    
+    print(border)
+    for word in words {
+        let paddedWord = word.padding(toLength: maxWordLength, withPad: " ", startingAt: 0)
+        print("* \(paddedWord) *")
+    }
+    print(border)
+}
+
+// Test
+kod1("Att programmera är skoj")
