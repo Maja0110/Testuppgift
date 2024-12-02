@@ -1,0 +1,44 @@
+class Person {
+    let birthYear: Int
+    let deathYear: Int
+    var father: Person?
+    var mother: Person?
+    
+    init(birthYear: Int, deathYear: Int, father: Person? = nil, mother: Person? = nil) {
+        self.birthYear = birthYear
+        self.deathYear = deathYear
+        self.father = father
+        self.mother = mother
+    }
+    
+    func lifespan() -> Int {
+        return deathYear - birthYear
+    }
+}
+
+// Create a family tree
+let grandfather1 = Person(birthYear: 1920, deathYear: 1995)
+let grandmother1 = Person(birthYear: 1925, deathYear: 1988)
+
+let grandfather2 = Person(birthYear: 1915, deathYear: 2010)
+let grandmother2 = Person(birthYear: 1918, deathYear: 2005)
+
+let father = Person(birthYear: 1950, deathYear: 2020, father: grandfather1, mother: grandmother1)
+let mother = Person(birthYear: 1955, deathYear: 2018, father: grandfather2, mother: grandmother2)
+
+let child = Person(birthYear: 1980, deathYear: 2040, father: father, mother: mother)
+
+// Find the longest-lived person
+let familyMembers = [
+    grandfather1, grandmother1, 
+    grandfather2, grandmother2, 
+    father, mother, 
+    child
+]
+
+if let longestLived = familyMembers.max(by: { $0.lifespan() < $1.lifespan() }) {
+    print("Longest-lived person:")
+    print("Born: \(longestLived.birthYear)")
+    print("Died: \(longestLived.deathYear)")
+    print("Lifespan: \(longestLived.lifespan()) years")
+}
